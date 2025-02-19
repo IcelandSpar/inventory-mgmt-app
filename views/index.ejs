@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Mgmt</title>
+</head>
+<body>
+    <h1>Inventory Management App Home Page</h1>
+    <ul style="padding: 0; list-style-type: none; border-bottom: 3px solid rgb(121, 121, 121);">
+        <% locals.data.map((item, index) => { %>
+            <li>
+                <h2><%= item.title %></h2>
+                <p>By: <%= item.author %></p>
+                <p>Publisher: <%= item.publisher %></p>
+                <p>Quantity: <%= item.quantity %></p>
+                <p>Description: <%= item.description %></p>
+            </li>
+            <% }) %>
+    </ul>
+</body>
+</html>
