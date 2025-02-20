@@ -41,8 +41,9 @@ nav {
 .navbar button {
   font-size: 1.5rem;
   color: #EEEEEE;
-  background-color: #535C91;
+  background-color: transparent;
   border-radius: 15px;
+
 }
 
 .navBarButtons {
@@ -55,6 +56,15 @@ nav {
   border: none;
   cursor: pointer;
   padding: 0.3rem 1rem;
+  border: 2px solid #535C91;
+  transition: border .3s ease-in-out;
+  
+}
+
+
+
+.navBarButtons button:hover {
+  border: 2px solid #EEEEEE;
 }
 
 .mainContainer {
@@ -89,9 +99,26 @@ nav {
   text-decoration: underline;
 }
 
+.mainItemImgCont {
+  position: relative;
+}
+.missingCoverText {
+  position: relative;
+  text-align: center;
+  text-wrap: wrap;
+  top: 30%;
+  right: 10%;
+  padding: 0 .5rem;
+  font-weight: 500;
+}
+
+.mainItemImgCont img {
+  position: relative;
+}
+
 .mainItemImgAndDescCont {
   display: grid;
-  grid-template-columns: 0.5fr 3fr;
+  grid-template-columns: .7fr 3fr;
   gap: 1rem;
 }
 
@@ -154,5 +181,6 @@ nav {
   padding: .5rem 1rem;
 
 }
+
 
 
