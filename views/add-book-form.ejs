@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Add Book</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <%- include('partials/navbar.ejs') %>
+    <main class="createFormMainContainer">
+        <form action="/create/add-book" method="POST" class="add-book-form">
+            <fieldset class="createFieldSet add-bookFieldSet">
+                <legend class="selectItemLegend">Add a book to your inventory!</legend>
+                <div class="textAuthPubQuantCont">
+                    <div class="addBookLabelAndInputCont">
+                        <label for="title">Title: </label>
+                        <input type="text" id="title" name="title">
+                    </div>
+                    <div class="addBookLabelAndInputCont">
+                        <label for="author">Author: </label>
+                        <input type="text" id="author" name="author">
+                    </div>
+                    <div class="addBookLabelAndInputCont">
+                        <label for="publisher">Publisher: </label>
+                        <input type="text" id="publisher" name="publisher">
+                    </div>
+                    <div class="addBookLabelAndInputCont">
+                        <label for="quantity">Quantity: </label>
+                        <input type="tel" id="quantity" name="quantity">
+                    </div>
+                </div>
+                <div class="addBookLabelAndInputCont">
+                    <label for="description">Description: </label>
+                    <textarea name="description" id="description" class="add-book-description-textarea"></textarea>
+                </div>
+            </fieldset>
+            <fieldset class="createFieldSet">
+                <legend class="selectItemLegend">Choose a cover for the book!</legend>
+                <div class="addBookLabelAndInputCont addImageUrlCont">
+                    <label for="imageUrl">Image URL: </label>
+                    <input type="url" id="imageUrl" name="imageUrl"> 
+                </div>
+            </fieldset>
+            <div class="addBookBtnCont"><button type="submit" class="addBookBtn">Add Book</button></div>
+        </form>
+    </main>
+</body>
+</html>

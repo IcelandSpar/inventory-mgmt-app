@@ -13,19 +13,20 @@
 <body>
     <%- include('partials/navbar.ejs') %>
     <main class="createFormMainContainer">
+        <form action="/create" method="POST">
         <fieldset class="createFieldSet">
             <legend class="selectItemLegend">Select the type of item to add to inventory</legend>
-            <form action="/create" method="POST">
+            
                 <div class="itemTypeInnerContainer">
                     <label for="itemType">Item Type: </label>
                     <select name="itemType" id="itemType">
                         <option value="book">Book</option>
                         <option value="videogame">Videogame</option>
                     </select>
-                    <button type="submit">Submit</button>
+                    
                 </div>
         </fieldset>
-
+        <div class="addBookBtnCont"><button type="submit" class="addBookBtn">Submit</button></div>
         </form>
     </main>
 </body>
