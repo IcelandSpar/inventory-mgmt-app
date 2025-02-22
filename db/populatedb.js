@@ -10,14 +10,19 @@ title VARCHAR(255),
 author VARCHAR(255),
 publisher VARCHAR(255),
 quantity INTEGER,
-description VARCHAR(400)
+description VARCHAR(400),
+cover_image_url VARCHAR(400)
 
 );
 
 
+INSERT INTO books (title, author, publisher, quantity, description, cover_image_url) 
+VALUES ('Against the Day', 'Thomas Pynchon', 'The Penguin' ,32, 'The Chums of Chance, Trystero, quaternionist ! Nikola Tesla ???', 'https://m.media-amazon.com/images/I/71WXBhnEnRL.jpg'),
+('Infinite Jest', 'David Foster Wallace', 'The Other Penguin', 12, 'The Year of Glad, in Enfield Tennis Academy', 'https://m.media-amazon.com/images/I/71J4YMYancL.jpg');
+
 INSERT INTO books (title, author, publisher, quantity, description) 
-VALUES ('Against the Day', 'Thomas Pynchon', 'The Penguin' ,32, 'The Chums of Chance, Trystero, quaternionist ! Nikola Tesla ???'),
-('Infinite Jest', 'David Foster Wallace', 'The Other Penguin', 12, 'The Year of Glad, in Enfield Tennis Academy');
+VALUES ('A Good Man is Hard to Find', 'Flannery O''Connor ', 'The Funny Penguin' ,32, 'She was once like me... They were once at peace...');
+
 
 `
 

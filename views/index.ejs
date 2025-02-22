@@ -22,7 +22,11 @@
                     <div class="mainItemImgAndDescCont">
                         <!-- Missing Book Cover Stock photo reference -->
                         <!-- Image by <a href="https://pixabay.com/users/darkmoon_art-1664300/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3057902">Dorothe</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3057902">Pixabay</a> -->
-                        <div class="mainItemImageCont"><div class="missingCoverText">Missing Cover...</div><img src="/missing_book.png" alt="missing book cover" width="90%"></div>
+                        <div class="mainItemImageCont">
+                            <% if(!item.cover_image_url) { %>
+                            <div class="missingCoverText">Missing Cover...</div>
+                            <% } %>
+                            <img src="<%= item.cover_image_url || 'missing_book.png' %>" alt="<%= item.title + ' Book Cover' %>" width="90%"></div>
                         <div class="mainItemDescription">
                             <p>Author: <%= item.author %></p>
                             <p>Publisher: <%= item.publisher %></p>
