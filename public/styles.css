@@ -104,7 +104,8 @@ nav {
 
 
 .homeMainCont:hover {
-  border: 4px solid #EEEEEE;
+  border: 4px solid #676d92;
+  
 }
 
 .mainUl {
@@ -124,7 +125,38 @@ nav {
 .mainItemTitle {
   font-size: 1.4rem;
   margin: 0 0 1rem 0;
-  text-decoration: underline;
+  display: inline-block;
+  position: relative;
+  /* text-decoration: underline #EEEEEE;
+  text-underline-offset: .1em;
+  transition: text-decoration 300ms, text-underline-offset 300ms ease-in-out; */
+}
+
+.mainItemTitle::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -.1rem;
+  left: 0;
+  background-color: #d3843d;
+  transition: transform 0.25s ease-out;
+}
+
+.homeMainCont:hover .mainItemTitle::after {
+  transform: scaleX(1);
+}
+
+.mainItemTitle::after {
+  transform-origin: bottom left;
+
+
+}
+
+.homeMainCont:hover .mainItemTitle {
+  /* text-decoration: underline #d3843d;
+  text-underline-offset: .3em; */
 }
 
 .mainItemImageCont {
