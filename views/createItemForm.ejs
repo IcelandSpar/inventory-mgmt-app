@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= locals.title %></title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/books.png" type="image/x-icon"/>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,6 +13,8 @@
 </head>
 <body>
     <%- include('partials/navbar.ejs') %>
+    <img class="bookIconPng" src="/book-icon.png" alt="Book Icon" width="300px" height="300px">
+    <img class="controllerIconPng" src="/controller-icon.png" alt="Game Controller Icon" width="300px" height="300px">
     <main class="createFormMainContainer">
         <form action="/create" method="POST">
         <fieldset class="createFieldSet">
@@ -26,7 +29,7 @@
                     
                 </div>
         </fieldset>
-        <div class="addBookBtnCont"><button type="submit" class="addBookBtn">Submit</button></div>
+        <div class="addBookBtnCont"><button type="submit" class="addBookBtn orangeBtn">Submit</button></div>
         </form>
     </main>
 </body>
