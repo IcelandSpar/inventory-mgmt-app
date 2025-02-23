@@ -18,6 +18,14 @@ const postBookOrVideoGame = async (req, res) => {
     }
 };
 
+const postAddBook = async (req, res) => {
+    const { title, author, publisher, quantity, description, imageUrl } = req.body;
+    const newBookArr = [title, author, publisher, quantity, description, imageUrl];
+    await db.postBook(newBookArr);
+    
+    res.redirect('/');
+};
+
 const getAddBookForm = (req, res) => {
     res.render('add-book-form');
 }
@@ -26,5 +34,6 @@ module.exports = {
     getIndexPage,
     getCreateForm,
     postBookOrVideoGame,
-    getAddBookForm
+    getAddBookForm,
+    postAddBook,
 }

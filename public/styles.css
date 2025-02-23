@@ -43,13 +43,15 @@ nav {
 
 .navBarTitleLink:active, .navBarTitleLink:link, .navBarTitleLink:visited {
   color: #EEEEEE;
-
+  text-decoration: underline #d3843d;
 }
 
 .navBarTitleLink {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: .5rem
+
+
 }
 
 .navbar button {
@@ -121,7 +123,7 @@ nav {
   position: relative;
   text-align: center;
   text-wrap: wrap;
-  top: 30%;
+  top: 40%;
   right: 10%;
   padding: 0 .5rem;
   font-weight: 500;
@@ -148,7 +150,8 @@ nav {
   font-size: 1.2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  line-height: 2rem;
 }
 
 .createFormMainContainer {
@@ -321,6 +324,44 @@ textarea {
   .navbar, .navbar a button, .navbar button {
     font-size: .7rem;
   }
+
+  .navBookIcon {
+    height: 1.1rem;
+  }
+
+  .mainItemImgAndDescCont {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+    place-items: center;
+
+  }
+
+  .mainItemImageCont {
+    max-width: 500px;
+    max-height: 500px;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 2rem;
+  }
+  .missingCoverText {
+    font-size: 2em;
+    top: 50%;
+    left: 0;
+  }
+
+  .mainItemImageCont img {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    object-fit: scale-down;
+
+    
+  }
+
+  .mainItemTitle {
+    text-align: center;
+  }
   }
 
   @media (max-width: 800px) {
@@ -336,6 +377,20 @@ textarea {
 @media (max-width: 500px) {
 .navbar, .navbar a button, .navbar button {
   font-size: .5rem;
+}
+
+.missingCoverText {
+  font-size: 1.2em;
+  top: 50%;
+  right: 0%;
+}
+
+.navBookIcon {
+  height: .9rem;
+}
+
+.navBarButtons {
+  gap: .5rem;
 }
 }
 
@@ -356,5 +411,3 @@ textarea {
     filter: opacity(.10);
   }
 }
-
-

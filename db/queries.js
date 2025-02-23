@@ -5,6 +5,11 @@ async function getAllBookInfo() {
     return rows; 
 }
 
+async function postBook(newBook) {
+    await pool.query("INSERT INTO books (title, author, publisher, quantity, description, cover_image_url) VALUES ($1, $2, $3, $4, $5, $6)", newBook);
+}
+
 module.exports = {
     getAllBookInfo,
+    postBook,
 }
