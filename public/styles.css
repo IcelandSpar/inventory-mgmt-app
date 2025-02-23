@@ -99,6 +99,12 @@ nav {
   border: 4px solid #535C91;
   border-radius: 15px;
   padding: 1rem;
+  transition: border .3s ease-in-out;
+}
+
+
+.homeMainCont:hover {
+  border: 4px solid #EEEEEE;
 }
 
 .mainUl {
@@ -110,27 +116,34 @@ nav {
   margin: 0 0 2rem;
 }
 
+.mainUl a, .mainUl a:visited, .mainUl {
+  color:#EEEEEE;
+  text-decoration: none;
+}
+
 .mainItemTitle {
   font-size: 1.4rem;
   margin: 0 0 1rem 0;
   text-decoration: underline;
 }
 
-.mainItemImgCont {
-  position: relative;
-}
-.missingCoverText {
+.mainItemImageCont {
   position: relative;
   text-align: center;
-  text-wrap: wrap;
-  top: 40%;
-  right: 10%;
-  padding: 0 .5rem;
+}
+.missingCoverText {
+  position: absolute;
   font-weight: 500;
+  width: 100%;
+  z-index: 3;
+  top: 30%;
 }
 
-.mainItemImgCont img {
+.bookImg {
+  width: 100%;
+  height: 100%;
   position: relative;
+
 }
 
 .mainItemImgAndDescCont {
@@ -337,6 +350,7 @@ textarea {
 
   }
 
+
   .mainItemImageCont {
     max-width: 500px;
     max-height: 500px;
@@ -346,12 +360,12 @@ textarea {
   }
   .missingCoverText {
     font-size: 2em;
-    top: 50%;
+
     left: 0;
   }
 
   .mainItemImageCont img {
-    margin: 0 auto;
+
     width: 100%;
     height: 100%;
     object-fit: scale-down;
@@ -381,7 +395,6 @@ textarea {
 
 .missingCoverText {
   font-size: 1.2em;
-  top: 50%;
   right: 0%;
 }
 
