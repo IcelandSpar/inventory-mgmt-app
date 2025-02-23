@@ -407,7 +407,15 @@ textarea {
 
   .mainItemTitle {
     text-align: center;
+    width: 100%;
   }
+  .mainItemTitle::after {
+    transform-origin: bottom center;
+  
+  
+  }
+
+
   }
 
   @media (max-width: 800px) {

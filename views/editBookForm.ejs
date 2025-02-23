@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="icon" href="/books.png" type="image/x-icon"/>
+    <title>Edit Book</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+    <%- include('partials/navbar.ejs') %>
+    <img class="bookIconPng" src="/book-icon.png" alt="Book Icon" width="300px" height="300px">
+    <img class="controllerIconPng" src="/controller-icon.png" alt="Game Controller Icon" width="300px" height="300px">
+
+    <main class="createFormMainContainer">
+        <form action="/editBook/<%= locals.data[0].id %>" method="POST" class="add-book-form">
+            <fieldset class="createFieldSet add-bookFieldSet">
+                <legend class="selectItemLegend">Add a book to your inventory!</legend>
+                <div class="textAuthPubQuantCont">
+                    <div class="addBookLabelAndInputCont">
+                        <label for="title">Title: </label>
+                        <input type="text" id="title" name="title" value="<%= locals.data[0].title %>" required>
+                    </div>
+                    <div class="addBookLabelAndInputCont">
+                        <label for="author">Author: </label>
+                        <input type="text" id="author" name="author" value="<%= locals.data[0].author %>" required>
+                    </div>
+                    <div class="addBookLabelAndInputCont">
+                        <label for="publisher">Publisher: </label>
+                        <input type="text" id="publisher" name="publisher" value="<%= locals.data[0].publisher %>" required>
+                    </div>
+                    <div class="addBookLabelAndInputCont">
+                        <label for="quantity">Quantity: </label>
+                        <input type="tel" id="quantity" name="quantity" value="<%= locals.data[0].quantity %>" required>
+                    </div>
+                </div>
+                <div class="addBookLabelAndInputCont">
+                    <label for="description">Description: </label>
+                    <textarea name="description" id="description" class="add-book-description-textarea"><%= locals.data[0].description %></textarea>
+                </div>
+            </fieldset>
+            <fieldset class="createFieldSet">
+                <legend class="selectItemLegend">Choose a cover for the book!</legend>
+                <div class="addBookLabelAndInputCont addImageUrlCont">
+                    <label for="imageUrl">Image URL: </label>
+                    <input type="url" id="imageUrl" name="imageUrl" value="<%= locals.data[0].cover_image_url %>"> 
+                </div>
+            </fieldset>
+            <div class="addBookBtnCont"><button type="submit" class="addBookBtn orangeBtn">Update Book</button></div>
+        </form>
+    </main>
+</body>
+</html>

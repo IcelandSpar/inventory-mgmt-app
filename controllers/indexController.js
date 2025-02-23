@@ -30,10 +30,17 @@ const getAddBookForm = (req, res) => {
     res.render('add-book-form');
 }
 
+const getEditBookForm = async (req, res) => {
+
+    const data = await db.getBookDetails(req.params.id);
+    res.render('editBookForm', {data: data})
+}
+
 module.exports = {
     getIndexPage,
     getCreateForm,
     postBookOrVideoGame,
     getAddBookForm,
     postAddBook,
+    getEditBookForm,
 }
