@@ -1,7 +1,7 @@
 const pool = require('./pool');
 
 async function getAllBookInfo() {
-    const { rows } = await pool.query('SELECT * FROM books');
+    const { rows } = await pool.query('SELECT * FROM books ORDER BY id');
     return rows; 
 }
 
@@ -14,8 +14,13 @@ async function getBookDetails(id) {
     return rows;
 }
 
+async function updateBookDetails(id, bookDetailsArr) {
+    await pool.query("UPDATE books SET title=$2, author=$3, publisher=$4, quantity=$5, description=$6, cover_image_url=$7 WHERE id=$1", [id, ...bookDetailsArr]);
+}
+
 module.exports = {
     getAllBookInfo,
     postBook,
     getBookDetails,
+    updateBookDetails,
 }

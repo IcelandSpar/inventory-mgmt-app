@@ -36,6 +36,11 @@ const getEditBookForm = async (req, res) => {
     res.render('editBookForm', {data: data})
 }
 
+const postEditBookForm = async (req, res) => {
+    db.updateBookDetails(req.params.id, [req.body.title, req.body.author, req.body.publisher, req.body.quantity, req.body.description, req.body.imageUrl])
+    res.redirect('/');
+}
+
 module.exports = {
     getIndexPage,
     getCreateForm,
@@ -43,4 +48,5 @@ module.exports = {
     getAddBookForm,
     postAddBook,
     getEditBookForm,
+    postEditBookForm,
 }
