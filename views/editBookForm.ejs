@@ -18,7 +18,7 @@
     <img class="controllerIconPng" src="/controller-icon.png" alt="Game Controller Icon" width="300px" height="300px">
 
     <main class="createFormMainContainer">
-        <form action="/editBook/<%= locals.data[0].id %>" method="POST" class="add-book-form">
+        <form action="/editBook/<%= locals.data[0].title %>/<%= locals.data[0].id %>" method="POST" class="add-book-form">
             <fieldset class="createFieldSet add-bookFieldSet">
                 <legend class="selectItemLegend">Add a book to your inventory!</legend>
                 <div class="textAuthPubQuantCont">

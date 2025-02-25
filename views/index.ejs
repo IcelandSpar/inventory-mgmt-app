@@ -19,7 +19,7 @@
         <h2 class="mainItemType">Books:</h2>
         <ul class="mainUl">
             <% locals.data.map((item, index) => { %>
-                <a href="/editBook/<%= item.id %>">
+                <a href="/editBook/<%= item.title %>/<%= item.id %>">
                     <li class="homeMainCont">
                     
                         <h3 class="mainItemTitle"><%= item.title %></h2>

@@ -154,10 +154,6 @@ nav {
 
 }
 
-.homeMainCont:hover .mainItemTitle {
-  /* text-decoration: underline #d3843d;
-  text-underline-offset: .3em; */
-}
 
 .mainItemImageCont {
   position: relative;
@@ -198,6 +194,32 @@ nav {
   justify-content: flex-start;
   line-height: 2rem;
 }
+
+.errorContainer {
+  list-style-type: none;
+  list-style-position: inside;
+  font-size: 1rem;
+  margin: 1rem auto;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  text-underline-offset: 5px;
+}
+
+.errorContainer li {
+  font-size: 1rem;
+  text-decoration: underline dotted #cc0000 2px;
+  
+}
+
+.errorContainer li::before {
+  content: url('feedback_icon.svg');
+  position: relative;
+  margin-right: .7rem;
+  top: .5rem;
+
+}
+
 
 .createFormMainContainer {
   max-width: 1200px;
@@ -344,6 +366,15 @@ textarea {
   background-image: linear-gradient(to right, #FFBF00, #eea406);
 }
 
+/* Form Validation Error borders */
+input:invalid, textarea:invalid {
+  border: 3px solid #cc0000;
+}
+
+input:valid, textarea:valid {
+  border: none;
+}
+
 @media (max-width: 1000px) {
   .bookIconPng {
     display: none;
@@ -372,6 +403,12 @@ textarea {
 
   .navBookIcon {
     height: 1.1rem;
+  }
+
+
+
+  .errorContainer {
+    grid-template-columns: 1fr;
   }
 
   .mainItemImgAndDescCont {
