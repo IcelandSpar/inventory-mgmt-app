@@ -220,6 +220,10 @@ nav {
 
 }
 
+.errorMsg {
+  line-height: 2rem;
+  white-space: pre-line;
+}
 
 .createFormMainContainer {
   max-width: 1200px;
@@ -367,13 +371,14 @@ textarea {
 }
 
 /* Form Validation Error borders */
-input:invalid, textarea:invalid {
+
+/* input:invalid, textarea:invalid {
   border: 3px solid #cc0000;
 }
 
 input:valid, textarea:valid {
   border: none;
-}
+} */
 
 @media (max-width: 1000px) {
   .bookIconPng {

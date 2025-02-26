@@ -2,7 +2,7 @@
     <h2>Please fix these errors:</h2>
     <ul class="errorContainer">
         <% errors.forEach((error) => { %>
-            <li class="errorMsg"><%= error.msg %></li>
+            <li class="errorMsg"><%= error.msg %><%= error.path == 'description' ? `\nCurrent character length: ${error.value.length}` : null %></li>
         <% }); %>
     </ul>
     <% } %>
