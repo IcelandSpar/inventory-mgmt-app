@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Book</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/books.png" type="image/x-icon" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <%- include('partials/navbar.ejs') %>
+    <img
+    class="bookIconPng"
+    src="/book-icon.png"
+    alt="Book Icon"
+    width="300px"
+    height="300px"
+  />
+  <img
+    class="controllerIconPng"
+    src="/controller-icon.png"
+    alt="Game Controller Icon"
+    width="300px"
+    height="300px"
+  />
+    <main class="mainContainer">
+        <form action="/deleteBook/<%= locals.title %>/<%= locals.id %>" method="POST">
+            <div class="deleteBookCoverCont">
+                <div class="deleteFormTextCont">
+                    <h2 class="deleteTitle">Are you sure you want to delete: <%= locals.title %>?</h2>
+                    <p>This is a permanent change</p>
+                </div>
+                <figure class="mainItemImageCont">
+                    <% if(locals.cover_image_url == '/missing_book.png') { %>
+                    <figcaption class="missingCoverText">
+                      Missing Cover...
+                    </figcaption>
+                    <% } %>
+                    <img
+                      class="bookImg"
+                      src="<%= locals.cover_image_url || 'missing_book.png' %>"
+                      alt="<%= locals.title + ' Book Cover' %>"
+                      width="90%"
+                    />
+                  </figure>
+                <div class="deleteBookFormErrorCont">
+                    <%- include('partials/errors') %>
+                </div>
+                <div class="deleteBookAdminLabelAndInput">
+                    <label for="adminPass">Enter an admin password to delete:</label>
+                    <input type="password" name="adminPass" id="adminPass">
+                </div>
+                <div class="deleteCancelCont">
+                    <a href="/" class="deleteCancelLink" title="Go back to home.">Cancel</a>
+                    <button type="submit" class="deleteBtn" title="Delete book. This is a permanent change."><img class="deleteBtnIcon" src="/deleteGoogleIcon.svg" alt="Delete button" width="40px"></button>
+                </div>
+            </div>
+        </form>
+    </main>
+    
+</body>
+</html>

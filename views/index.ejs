@@ -1,47 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inventory Mgmt</title>
-    <link rel="stylesheet" href="/styles.css">
-    <link rel="icon" href="/books.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" href="/books.png" type="image/x-icon" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <%- include('partials/navbar.ejs') %>
-    <img class="bookIconPng" src="/book-icon.png" alt="Book Icon" width="300px" height="300px">
-    <img class="controllerIconPng" src="/controller-icon.png" alt="Game Controller Icon" width="300px" height="300px">
+    <img
+      class="bookIconPng"
+      src="/book-icon.png"
+      alt="Book Icon"
+      width="300px"
+      height="300px"
+    />
+    <img
+      class="controllerIconPng"
+      src="/controller-icon.png"
+      alt="Game Controller Icon"
+      width="300px"
+      height="300px"
+    />
     <main class="mainContainer">
-        <h2 class="mainItemType">Books:</h2>
-        <ul class="mainUl">
-            <% locals.data.map((item, index) => { %>
+      <h2 class="mainItemType">Books:</h2>
+      <ul class="mainUl">
+        <% locals.data.map((item, index) => { %>
+          <li class="homeMainCont">
+            <div class="titleAndDeleteBtnCont">
+              <h3 class="mainItemTitle"><%= item.title %></h3>
+              <!-- <a href="https://www.flaticon.com/free-icons/ebook" title="ebook icons">Ebook icons created by Ranah Pixel Studio - Flaticon</a> -->
+              <div>
                 <a href="/editBook/<%= item.id %>">
-                    <li class="homeMainCont">
-                    
-                        <h3 class="mainItemTitle"><%= item.title %></h2>
-                        <div class="mainItemImgAndDescCont">
-                            <!-- Missing Book Cover Stock photo reference -->
-                            <!-- Image by <a href="https://pixabay.com/users/darkmoon_art-1664300/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3057902">Dorothe</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3057902">Pixabay</a> -->
-                            <figure class="mainItemImageCont">
-                                <% if(!item.cover_image_url) { %>
-                                <figcaption class="missingCoverText">Missing Cover...</figcaption>
-                                <% } %>
-                                <img class="bookImg" src="<%= item.cover_image_url || 'missing_book.png' %>" alt="<%= item.title + ' Book Cover' %>" width="90%"></figure>
-                            <div class="mainItemDescription">
-                                <p>Author: <%= item.author %></p>
-                                <p>Publisher: <%= item.publisher %></p>
-                                <p>Quantity: <%= item.quantity %></p>
-                                <p>Description: <%= item.description %></p>
-                            </div>
-                        </div>
-                    </li>
+                    <button class="editBookBtn">
+                      <img class="editBookIcon" title="Edit Book" src="/editGoogleIcon.svg" alt="edit book" width="25px"/>
+                    </button>
                 </a>
-                <% }) %>
-        </ul>
+                <a href="/deleteBook/<%= item.title %>/<%= item.id %>">
+                    <button class="deleteBookBtn">
+                      <img
+                        title="Delete Book"
+                        class="deleteBookIcon"
+                        src="/deleteGoogleIcon.svg"
+                        alt="delete book"
+                        width="25px"
+                      />
+                    </button>
+                </a>
+              </div>
+            </div>
+            <div class="mainItemImgAndDescCont">
+              <!-- Missing Book Cover Stock photo reference -->
+              <!-- Image by <a href="https://pixabay.com/users/darkmoon_art-1664300/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3057902">Dorothe</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3057902">Pixabay</a> -->
+              <figure class="mainItemImageCont">
+                <% if(!item.cover_image_url) { %>
+                <figcaption class="missingCoverText">
+                  Missing Cover...
+                </figcaption>
+                <% } %>
+                <img
+                  class="bookImg"
+                  src="<%= item.cover_image_url || 'missing_book.png' %>"
+                  alt="<%= item.title + ' Book Cover' %>"
+                  width="90%"
+                />
+              </figure>
+              <div class="mainItemDescription">
+                <p>Author: <%= item.author %></p>
+                <p>Publisher: <%= item.publisher %></p>
+                <p>Quantity: <%= item.quantity %></p>
+                <p>Description: <%= item.description %></p>
+              </div>
+            </div>
+          </li>
+        <% }) %>
+      </ul>
     </main>
-</body>
+  </body>
 </html>
