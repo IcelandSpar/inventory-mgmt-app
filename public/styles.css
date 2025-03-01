@@ -116,12 +116,11 @@ nav {
 .indexImgAndParaContainer img {
   max-width: 400px;
   max-height: 400px;
-  width: 100%;
-  height: 100%;
+  width: 400px;
+  height: 400px;
   object-fit: contain;
-  border-radius: 50%;
+  border-radius: 100%;
   border: 10px solid #9290C3;
-  
 }
 
 .mainItemType {
@@ -523,6 +522,13 @@ input:valid, textarea:valid {
   }
 
 
+  .indexImgAndParaContainer img {
+    max-width: 200px;
+    max-height: 200px;
+    width: 200px;
+    height: 200px;
+  }
+
 
   .errorContainer {
     grid-template-columns: 1fr;
@@ -600,7 +606,7 @@ input:valid, textarea:valid {
 
     }
 
-@media (max-width: 500px) {
+@media (max-width: 550px) {
 .navbar, .navbar a button, .navbar button {
   font-size: .5rem;
 }
