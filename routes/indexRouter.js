@@ -1,8 +1,10 @@
 const { Router } = require('express');
 
 const indexRouter = Router();
-const { getIndexPage, getCreateForm, postBookOrVideoGame, getAddBookForm, postAddBook, getEditBookForm, postEditBookForm, getDeleteBookForm, postDeleteBook } = require('../controllers/indexController');
+const { getIndexPage, getCreateForm, postBookOrVideoGame, getAddBookForm, postAddBook, getEditBookForm, postEditBookForm, getDeleteBookForm, postDeleteBook, getBooksPage } = require('../controllers/indexController');
 
+
+indexRouter.get('/books', getBooksPage);
 
 indexRouter.get('/', getIndexPage);
 indexRouter.get('/create', getCreateForm);

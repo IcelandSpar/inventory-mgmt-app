@@ -33,7 +33,7 @@ const validateUser = [
 ];
 
 const getIndexPage = async (req, res) => {
-  const data = await db.getAllBookInfo();
+  const data = await db.getLimitedBookInfo();
   res.render("index", { data: data });
 };
 
@@ -135,6 +135,11 @@ const postDeleteBook = async (req, res) => {
     
 }
 
+const getBooksPage = async (req, res) => {
+    const data = await db.getAllBookInfo();
+    res.render("books", { data: data });
+}
+
 module.exports = {
   getIndexPage,
   getCreateForm,
@@ -145,4 +150,5 @@ module.exports = {
   postEditBookForm,
   getDeleteBookForm,
   postDeleteBook,
+  getBooksPage,
 };

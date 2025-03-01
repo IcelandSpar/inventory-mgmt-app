@@ -1,5 +1,10 @@
 const pool = require('./pool');
 
+async function getLimitedBookInfo() {
+    const { rows } = await pool.query('SELECT * FROM books ORDER BY id LIMIT 3');
+    return rows;
+}
+
 async function getAllBookInfo() {
     const { rows } = await pool.query('SELECT * FROM books ORDER BY id');
     return rows; 
@@ -34,4 +39,5 @@ module.exports = {
     updateBookDetails,
     getDeleteBookImage,
     deleteBook,
+    getLimitedBookInfo,
 }
