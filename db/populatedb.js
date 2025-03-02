@@ -24,6 +24,9 @@ INSERT INTO books (title, author, publisher, quantity, description)
 VALUES ('A Good Man is Hard to Find', 'Flannery O''Connor ', 'The Funny Penguin' ,32, 'She was once like me... They were once at peace...');
 
 
+INSERT INTO books (title, author, publisher, quantity, description) 
+VALUES ('Freedom', 'Jonathan Franzen', 'Farrar, Straus and Giroux' , 42, 'The novel follows the lives of the Berglund family, particularly the parents Patty and Walter, as their lives develop and their happiness eventually falls apart. Important to their story is a college friend of Walter''s and successful rock musician, Richard Katz, who has an affair with Patty.');
+
 `
 
 async function main() {

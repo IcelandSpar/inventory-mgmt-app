@@ -157,6 +157,17 @@ nav {
   
 }
 
+
+a:visited, a:active, a:link, a:hover {
+  color: #EEEEEE;
+}
+
+.noBooksInInventoryText {
+  margin: 0 auto;
+  max-width: 1200px;
+  text-align: center;
+}
+
 .mainUl {
   display: flex;
   flex-direction: column;

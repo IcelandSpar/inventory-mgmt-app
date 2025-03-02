@@ -32,6 +32,9 @@
     />
     <main class="mainContainer">
       <h2 class="mainItemType">Books:</h2>
+      <% if(locals.data.length == 0) {  %>
+        <p class="noBooksInInventoryText">No Books in inventory exist, you can add a <a class="noBooksInInventoryLink" href="/create">New Book!</a></p>
+     <% }  %>
       <ul class="mainUl">
         <% locals.data.map((item, index) => { %>
           <li class="homeMainCont">
