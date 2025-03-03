@@ -45,11 +45,60 @@
                     <textarea name="description" id="description" class="add-book-description-textarea"><%= !locals.data ? null : locals.data.description %></textarea>
                 </div>
             </fieldset>
+            <fieldset  class="createFieldSet">
+                <div class="addBookLabelAndInputCont">
+                    <label for="genres">Genres: </label>
+                    <div class="genreCont">
+
+                    </div>
+                    <button class="addGenreBtn">Add Genre</button>
+                    <script>
+                        let inputNumber = 0;
+                        const genreCont = document.querySelector('.genreCont');
+                        const addGenreBtn = document.querySelector('.addGenreBtn');
+                        addGenreBtn.addEventListener('click', (e) => {
+
+                            e.preventDefault()
+                            const newEl = document.createElement('input');
+                            newEl.setAttribute('class', `input-number-${inputNumber}`)
+                            const wrapperDiv = document.createElement('div')
+                            wrapperDiv.setAttribute('class', `wrapper-${inputNumber}`)
+                            const removeBtn = document.createElement('button')
+                            removeBtn.setAttribute('class', `removeBtn-${inputNumber}`)
+                            const removeInputImg = document.createElement('img');
+                            removeInputImg.setAttribute('src', '/deleteGoogleIcon.svg')
+                            removeInputImg.setAttribute('alt', 'Delete Input icon');
+                            newEl.setAttribute('name', 'genre_type')
+
+                            newEl.style.cssText = 'flex-grow: 1; max-width: 100%;'
+                            wrapperDiv.style.cssText = 'display: flex; gap: 1rem;'
+                            removeBtn.style.cssText = 'background-color: transparent; border: none; cursor: pointer;';
+                            removeInputImg.style.cssText = '  filter: invert(10%) sepia(61%) saturate(7434%) hue-rotate(359deg) brightness(103%) contrast(114%);'
+                            removeBtn.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                
+                                document.querySelector(`.wrapper-${(Array.from(removeBtn.classList)[0]).slice(10)}`).remove();
+                            })
+                            
+                            genreCont.appendChild(wrapperDiv)
+                            wrapperDiv.appendChild(newEl)
+                            wrapperDiv.appendChild(removeBtn)
+                            removeBtn.appendChild(removeInputImg);
+                            inputNumber++
+                        })
+
+                        const createGenreInputEvent = new Event('click');
+                        addGenreBtn.dispatchEvent(createGenreInputEvent);
+
+
+                    </script>
+                </div>
+            </fieldset>
             <fieldset class="createFieldSet">
                 <legend class="selectItemLegend">Choose a cover for the book!</legend>
                 <div class="addBookLabelAndInputCont addImageUrlCont">
                     <label for="imageUrl">Image URL: </label>
-                    <input type="url" id="imageUrl" name="imageUrl" value="<%= !locals.data ? null : locals.data.imageUrl %>"> 
+                    <input type="url" id="imageUrl" name="imageUrl" value="<%= !locals.data ? null : locals.data.imageUrl %>">
                 </div>
             </fieldset>
             <div class="addBookBtnCont"><button type="submit" class="addBookBtn orangeBtn">Add Book</button></div>

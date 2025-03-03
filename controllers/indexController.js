@@ -69,8 +69,15 @@ const postAddBook = [
       description,
       imageUrl,
     ];
-    await db.postBook(newBookArr);
+    console.log(req.body.genre_type)
+    const idVal = await db.postBook(newBookArr);
+    // await db.postBook(newBookArr);
 
+   await req.body.genre_type.forEach(async element => {
+        await db.postGenre(idVal, element)
+    });
+    
+    
     res.redirect("/");
   },
 ];

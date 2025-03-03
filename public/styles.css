@@ -395,6 +395,12 @@ textarea {
   resize: vertical;
 }
 
+.genreCont {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
 .addImageUrlCont {
   max-width: 500px;
 }
@@ -532,6 +538,9 @@ input:valid, textarea:valid {
     height: 1.1rem;
   }
 
+  .genreCont {
+    grid-template-columns: 1fr;
+  }
 
   .indexImgAndParaContainer img {
     max-width: 200px;
