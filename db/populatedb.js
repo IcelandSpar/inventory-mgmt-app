@@ -31,7 +31,9 @@ VALUES ('Freedom', 'Jonathan Franzen', 'Farrar, Straus and Giroux' , 42, 4, 'The
 
 
 CREATE TABLE IF NOT EXISTS genres 
-(book_id INTEGER, genre_type VARCHAR(255)
+(book_id INTEGER, genre_type VARCHAR(255),
+CONSTRAINT fk_book_id FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
+
 );
 
 INSERT INTO genres (book_id, genre_type) VALUES

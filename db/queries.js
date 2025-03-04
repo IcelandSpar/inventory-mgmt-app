@@ -67,6 +67,10 @@ async function deleteBook(id) {
     await pool.query("DELETE FROM books WHERE id=$1",[id]);
 }
 
+async function deleteGenres(id) {
+    await pool.query('DELETE FROM genres WHERE book_id=$1', [id]);
+}
+
 module.exports = {
     getAllBookInfo,
     postBook,
@@ -76,4 +80,5 @@ module.exports = {
     deleteBook,
     getLimitedBookInfo,
     postGenre,
+    deleteGenres
 }

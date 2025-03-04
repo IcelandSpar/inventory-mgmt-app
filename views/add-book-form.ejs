@@ -63,6 +63,9 @@
                             e.preventDefault()
                             const newEl = document.createElement('input');
                             newEl.setAttribute('class', `input-number-${inputNumber}`)
+                            newEl.setAttribute('required', '');
+                            newEl.setAttribute('oninvalid', 'this.setCustomValidity("Please fill out this field, or remove input with trash icon.")');
+                            newEl.setAttribute('oninput', 'this.setCustomValidity("")')
                             const wrapperDiv = document.createElement('div')
                             wrapperDiv.setAttribute('class', `wrapper-${inputNumber}`)
                             const removeBtn = document.createElement('button')

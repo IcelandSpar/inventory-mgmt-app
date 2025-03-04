@@ -135,6 +135,7 @@ const getDeleteBookForm = async (req, res) => {
 const postDeleteBook = async (req, res) => {
     if(req.body.adminPass == process.env.ADMIN_PASS) {
         await db.deleteBook(req.params.id);
+        await db.deleteGenres(req.params.id);
         res.redirect('/');
         return
     } else {
