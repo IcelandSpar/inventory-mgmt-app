@@ -46,6 +46,7 @@
                 </div>
             </fieldset>
             <fieldset  class="createFieldSet">
+                <legend class="selectItemLegend">Add book genres below!</legend>
                 <div class="addBookLabelAndInputCont">
                     <label for="genres">Genres: </label>
                     <div class="genreCont">
@@ -56,6 +57,7 @@
                         let inputNumber = 0;
                         const genreCont = document.querySelector('.genreCont');
                         const addGenreBtn = document.querySelector('.addGenreBtn');
+                        addGenreBtn.style.cssText = 'background-color: transparent; color: #EEEEEE; border: 2px solid #535C91; font-size: 1rem; cursor: pointer; border-radius: 7px; padding: .7rem 1rem; text-decoration: 2px solid underline; text-underline-offset: .2rem;'
                         addGenreBtn.addEventListener('click', (e) => {
 
                             e.preventDefault()

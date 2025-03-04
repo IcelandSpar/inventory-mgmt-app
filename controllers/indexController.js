@@ -77,8 +77,10 @@ const postAddBook = [
         await db.postGenre(idVal, element)
     });
     
-    
-    res.redirect("/");
+    setTimeout(() => {
+        res.redirect("/");
+    }, 3000)
+
   },
 ];
 
