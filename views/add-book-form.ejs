@@ -57,28 +57,26 @@
                         let inputNumber = 0;
                         const genreCont = document.querySelector('.genreCont');
                         const addGenreBtn = document.querySelector('.addGenreBtn');
-                        addGenreBtn.style.cssText = 'background-color: transparent; color: #EEEEEE; border: 2px solid #535C91; font-size: 1rem; cursor: pointer; border-radius: 7px; padding: .7rem 1rem; text-decoration: 2px solid underline; text-underline-offset: .2rem;'
+                        addGenreBtn.setAttribute('class', 'addGenreBtn');
                         addGenreBtn.addEventListener('click', (e) => {
 
                             e.preventDefault()
                             const newEl = document.createElement('input');
-                            newEl.setAttribute('class', `input-number-${inputNumber}`)
+                            newEl.setAttribute('class', `input-number-${inputNumber} inputGenre`)
                             newEl.setAttribute('required', '');
                             newEl.setAttribute('oninvalid', 'this.setCustomValidity("Please fill out this field, or remove input with trash icon.")');
                             newEl.setAttribute('oninput', 'this.setCustomValidity("")')
                             const wrapperDiv = document.createElement('div')
-                            wrapperDiv.setAttribute('class', `wrapper-${inputNumber}`)
+                            wrapperDiv.setAttribute('class', `wrapper-${inputNumber} genreWrapperDiv`)
                             const removeBtn = document.createElement('button')
-                            removeBtn.setAttribute('class', `removeBtn-${inputNumber}`)
+                            removeBtn.setAttribute('class', `removeBtn-${inputNumber} removeGenreBtn`)
                             const removeInputImg = document.createElement('img');
                             removeInputImg.setAttribute('src', '/deleteGoogleIcon.svg')
                             removeInputImg.setAttribute('alt', 'Delete Input icon');
+                            removeInputImg.setAttribute('class', 'removeGenreBtnImg')
                             newEl.setAttribute('name', 'genre_type')
 
-                            newEl.style.cssText = 'flex-grow: 1; max-width: 100%;'
-                            wrapperDiv.style.cssText = 'display: flex; gap: 1rem;'
-                            removeBtn.style.cssText = 'background-color: transparent; border: none; cursor: pointer;';
-                            removeInputImg.style.cssText = '  filter: invert(10%) sepia(61%) saturate(7434%) hue-rotate(359deg) brightness(103%) contrast(114%);'
+
                             removeBtn.addEventListener('click', (e) => {
                                 e.preventDefault();
                                 

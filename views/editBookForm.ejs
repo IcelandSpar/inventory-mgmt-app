@@ -45,6 +45,7 @@
                     <textarea name="description" id="description" class="add-book-description-textarea"><%= locals.data[0].description %></textarea>
                 </div>
             </fieldset>
+            <% locals.data[0].genre_type.forEach((item) => console.log(item)) %>
             <fieldset class="createFieldSet">
                 <legend class="selectItemLegend">Choose a cover for the book!</legend>
                 <div class="addBookLabelAndInputCont addImageUrlCont">

@@ -50,7 +50,8 @@ async function postGenre(book_id, genre) {
 }
 
 async function getBookDetails(id) {
-    const { rows } = await pool.query('SELECT * FROM books WHERE id=$1', [id]);
+    const { rows } = await pool.query(`SELECT books.id, title, author, publisher, quantity, description, cover_image_url,
+json_agg(genre_type) AS genre_type FROM books LEFT JOIN genres ON book_id = genre_id WHERE books.id=$1 GROUP BY books.id, title, author, publisher, quantity, description, cover_image_url ORDER BY books.id`, [id]);
     return rows;
 }
 
