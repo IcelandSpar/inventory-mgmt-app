@@ -111,6 +111,7 @@ const postEditBookForm = [
               quantity: req.body.quantity,
               description: req.body.description,
               cover_image_url: req.body.imageUrl,
+              genre_type: req.body.genre_type,
             },
           ],
         });
@@ -123,6 +124,8 @@ const postEditBookForm = [
       req.body.description,
       req.body.imageUrl,
     ]);
+
+    
     res.redirect("/");
   },
 ];
