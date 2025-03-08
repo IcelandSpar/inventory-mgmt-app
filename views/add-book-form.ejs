@@ -54,27 +54,108 @@
                     </div>
                     <button class="addGenreBtn">Add Genre</button>
                     <script>
+
+                        let genreData = '<%- JSON.stringify(locals.data.genre_type)  %>';
+                        let parsedGenreData = JSON.parse(genreData);
+                        console.log(parsedGenreData)
                         let inputNumber = 0;
+
+
+
                         const genreCont = document.querySelector('.genreCont');
                         const addGenreBtn = document.querySelector('.addGenreBtn');
                         addGenreBtn.setAttribute('class', 'addGenreBtn');
-                        addGenreBtn.addEventListener('click', (e) => {
+                        addGenreBtn.setAttribute('type', 'button');
 
-                            e.preventDefault()
+                        const populateGenre = () => {
+                            parsedGenreData.forEach((arrItem) => {
+                                const wrapperDiv = document.createElement('div');
                             const newEl = document.createElement('input');
+                            const removeBtn = document.createElement('button');
+                            const removeInputImg = document.createElement('img');
+
+                            wrapperDiv.setAttribute('class', `wrapper-${inputNumber} genreWrapperDiv`)
+
                             newEl.setAttribute('class', `input-number-${inputNumber} inputGenre`)
                             newEl.setAttribute('required', '');
                             newEl.setAttribute('oninvalid', 'this.setCustomValidity("Please fill out this field, or remove input with trash icon.")');
-                            newEl.setAttribute('oninput', 'this.setCustomValidity("")')
-                            const wrapperDiv = document.createElement('div')
-                            wrapperDiv.setAttribute('class', `wrapper-${inputNumber} genreWrapperDiv`)
-                            const removeBtn = document.createElement('button')
-                            removeBtn.setAttribute('class', `removeBtn-${inputNumber} removeGenreBtn`)
-                            const removeInputImg = document.createElement('img');
+                            newEl.setAttribute('oninput', 'this.setCustomValidity("")');
+                            newEl.setAttribute('name', 'genre_type');
+                            newEl.setAttribute('value', arrItem);
+
+                            newEl.addEventListener('keypress', (e) => {
+                            if(e.key == 'Enter') {
+                                e.preventDefault();
+                                document.querySelector(`.input-number-${(parseFloat(Array.from(e.target.classList)[0].slice(13)) + 1).toString()}`) ?
+                                document.querySelector(`.input-number-${(parseFloat(Array.from(e.target.classList)[0].slice(13)) + 1).toString()}`).focus() : 
+                                document.querySelector('.imageUrlInput').focus();
+
+                                // 
+                            }
+                        })
+
+                            
+                            removeBtn.setAttribute('class', `removeBtn-${inputNumber} removeGenreBtn`);
+                            removeBtn.setAttribute('type', 'button');
+
+                            
                             removeInputImg.setAttribute('src', '/deleteGoogleIcon.svg')
                             removeInputImg.setAttribute('alt', 'Delete Input icon');
                             removeInputImg.setAttribute('class', 'removeGenreBtnImg')
-                            newEl.setAttribute('name', 'genre_type')
+
+
+                            removeBtn.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                
+                                document.querySelector(`.wrapper-${(Array.from(removeBtn.classList)[0]).slice(10)}`).remove();
+                            })
+                            
+                            genreCont.appendChild(wrapperDiv)
+                            wrapperDiv.appendChild(newEl)
+                            wrapperDiv.appendChild(removeBtn)
+                            removeBtn.appendChild(removeInputImg);
+                            inputNumber++
+                            });
+                        }
+
+
+
+
+
+                        addGenreBtn.addEventListener('click', (e) => {
+
+                            e.preventDefault()
+                            const wrapperDiv = document.createElement('div');
+                            const newEl = document.createElement('input');
+                            const removeBtn = document.createElement('button');
+                            const removeInputImg = document.createElement('img');
+
+                            wrapperDiv.setAttribute('class', `wrapper-${inputNumber} genreWrapperDiv`)
+
+                            newEl.setAttribute('class', `input-number-${inputNumber} inputGenre`)
+                            newEl.setAttribute('required', '');
+                            newEl.setAttribute('oninvalid', 'this.setCustomValidity("Please fill out this field, or remove input with trash icon.")');
+                            newEl.setAttribute('oninput', 'this.setCustomValidity("")');
+                            newEl.setAttribute('name', 'genre_type');
+
+                            newEl.addEventListener('keypress', (e) => {
+                            if(e.key == 'Enter') {
+                                e.preventDefault();
+                                document.querySelector(`.input-number-${(parseFloat(Array.from(e.target.classList)[0].slice(13)) + 1).toString()}`) ?
+                                document.querySelector(`.input-number-${(parseFloat(Array.from(e.target.classList)[0].slice(13)) + 1).toString()}`).focus() : 
+                                document.querySelector('.imageUrlInput').focus();
+
+                                // 
+                            }
+                        })
+
+                            
+                            removeBtn.setAttribute('class', `removeBtn-${inputNumber} removeGenreBtn`);
+                            removeBtn.setAttribute('type', 'button');
+                            
+                            removeInputImg.setAttribute('src', '/deleteGoogleIcon.svg')
+                            removeInputImg.setAttribute('alt', 'Delete Input icon');
+                            removeInputImg.setAttribute('class', 'removeGenreBtnImg')
 
 
                             removeBtn.addEventListener('click', (e) => {
@@ -90,8 +171,15 @@
                             inputNumber++
                         })
 
-                        const createGenreInputEvent = new Event('click');
-                        addGenreBtn.dispatchEvent(createGenreInputEvent);
+                        if(parsedGenreData[0] == null) {
+                            const createGenreInputEvent = new Event('click');
+                            addGenreBtn.dispatchEvent(createGenreInputEvent);
+                        } else if(parsedGenreData) {
+                            populateGenre();
+                            
+                        }
+                        
+
                     </script>
                 </div>
             </fieldset>
@@ -99,7 +187,7 @@
                 <legend class="selectItemLegend">Choose a cover for the book!</legend>
                 <div class="addBookLabelAndInputCont addImageUrlCont">
                     <label for="imageUrl">Image URL: </label>
-                    <input type="url" id="imageUrl" name="imageUrl" value="<%= !locals.data ? null : locals.data.imageUrl %>">
+                    <input class="imageUrlInput" type="url" id="imageUrl" name="imageUrl" value="<%= !locals.data ? null : locals.data.imageUrl %>">
                 </div>
             </fieldset>
             <div class="addBookBtnCont"><button type="submit" class="addBookBtn orangeBtn">Add Book</button></div>

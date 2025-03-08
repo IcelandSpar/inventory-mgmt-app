@@ -359,6 +359,7 @@ a:hover {
   max-width: 100%;
 }
 
+
 .removeGenreBtn {
   background-color: transparent;
   border: none;
@@ -401,6 +402,11 @@ textarea,
   background-color: #535c91;
   border: 2px solid #535c91;
   color: #eeeeee;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s !important;
 }
 
 .textAuthPubQuantCont {

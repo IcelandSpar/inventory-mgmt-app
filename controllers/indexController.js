@@ -38,7 +38,7 @@ const getIndexPage = async (req, res) => {
 };
 
 const getCreateForm = async (req, res) => {
-  res.render("createItemForm", { title: "Add Items" });
+  res.render("createItemForm", { title: "Add Items"});
 };
 
 const postBookOrVideoGame = async (req, res) => {
@@ -69,7 +69,6 @@ const postAddBook = [
       description,
       imageUrl,
     ];
-    console.log(req.body.genre_type)
     const idVal = await db.postBook(newBookArr);
     // await db.postBook(newBookArr);
 
@@ -85,7 +84,7 @@ const postAddBook = [
 ];
 
 const getAddBookForm = (req, res) => {
-  res.render("add-book-form");
+  res.render("add-book-form", {data: {genre_type: []}});
 };
 
 const getEditBookForm = async (req, res) => {
@@ -125,8 +124,15 @@ const postEditBookForm = [
       req.body.imageUrl,
     ]);
 
+    await db.deleteMatchGenres(req.params.id);
+    await req.body.genre_type.forEach(async genre => {
+      await db.updateEditGenres(req.params.id, genre);
+    });
+
     
-    res.redirect("/");
+    setTimeout(() => {
+      res.redirect("/");
+  }, 3000)
   },
 ];
 

@@ -76,6 +76,7 @@
                 <p>Author: <%= item.author %></p>
                 <p>Publisher: <%= item.publisher %></p>
                 <p>Quantity: <%= item.quantity %></p>
+                <p>Genres: <%= (Array.from(item.genre_type)).join(', ') || 'No current genres listed' %></p>
                 <p>Description: <%= item.description %></p>
               </div>
             </div>

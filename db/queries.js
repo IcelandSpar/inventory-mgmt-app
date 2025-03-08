@@ -5,7 +5,7 @@ async function getLimitedBookInfo() {
     // let queryRes = await pool.query('SELECT book_id, genres.genre_type FROM genres JOIN books ON books.genre_id = genres.book_id');
     // console.log(queryRes.rows)
     const { rows } = await pool.query(`SELECT books.id, title, author, publisher, quantity, description, cover_image_url,
-json_agg(genre_type) AS genre_type FROM books LEFT JOIN genres ON book_id = genre_id GROUP BY books.id, title, author, publisher, quantity, description, cover_image_url ORDER BY books.id`);
+json_agg(genre_type) AS genre_type FROM books LEFT JOIN genres ON book_id = genre_id GROUP BY books.id, title, author, publisher, quantity, description, cover_image_url ORDER BY books.id LIMIT 3`);
 
 
 
@@ -32,7 +32,8 @@ json_agg(genre_type) AS genre_type FROM books LEFT JOIN genres ON book_id = genr
 }
 
 async function getAllBookInfo() {
-    const { rows } = await pool.query('SELECT * FROM books ORDER BY id');
+    const { rows } = await pool.query(`SELECT books.id, title, author, publisher, quantity, description, cover_image_url,
+json_agg(genre_type) AS genre_type FROM books LEFT JOIN genres ON book_id = genre_id GROUP BY books.id, title, author, publisher, quantity, description, cover_image_url ORDER BY books.id`);
     return rows; 
 }
 
@@ -47,6 +48,15 @@ async function postBook(newBook) {
 async function postGenre(book_id, genre) {
     await pool.query('INSERT INTO genres (book_id, genre_type) VALUES ($1, $2)', [book_id, genre]);
     await pool.query('UPDATE books SET genre_id = $1 WHERE id=$1', [book_id])
+}
+
+async function deleteMatchGenres(book_id) {
+    await pool.query('DELETE FROM genres WHERE book_id=$1', [book_id]);
+}
+
+async function updateEditGenres(book_id, genre) {
+    await pool.query('INSERT INTO genres (book_id, genre_type) VALUES ($1, $2)', [book_id, genre]);
+    await pool.query('UPDATE books SET genre_id=$1 WHERE id=$1', [book_id]);
 }
 
 async function getBookDetails(id) {
@@ -81,5 +91,7 @@ module.exports = {
     deleteBook,
     getLimitedBookInfo,
     postGenre,
-    deleteGenres
+    deleteGenres,
+    deleteMatchGenres,
+    updateEditGenres,
 }

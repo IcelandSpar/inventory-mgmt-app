@@ -45,10 +45,10 @@
                     <textarea name="description" id="description" class="add-book-description-textarea"><%= locals.data[0].description %></textarea>
                 </div>
             </fieldset>
-            <% const removeBtnHandle = (e) => {  %>
+            <!-- <% const removeBtnHandle = (e) => {  %>
             <%  e.preventDefault(); %>
             <%  document.querySelector(`.wrapper-${(Array.from(removeBtn.classList)[0]).slice(10)}`).remove();  %>
-          <%  };  %>
+          <%  };  %> -->
             <fieldset  class="createFieldSet">
                 <legend class="selectItemLegend">Add book genres below!</legend>
                 <div class="addBookLabelAndInputCont">
@@ -56,11 +56,10 @@
                     <div class="genreCont">
                     </div>
                     <button class="addGenreBtn">Add Genre</button>
-                    <script>
+                    <script defer>
 
                         let genreData = '<%- JSON.stringify(locals.data[0].genre_type)  %>';
                         let parsedGenreData = JSON.parse(genreData);
-                        console.log(parsedGenreData)
                         let inputNumber = 0;
 
 
@@ -68,6 +67,7 @@
                         const genreCont = document.querySelector('.genreCont');
                         const addGenreBtn = document.querySelector('.addGenreBtn');
                         addGenreBtn.setAttribute('class', 'addGenreBtn');
+                        addGenreBtn.setAttribute('type', 'button');
 
                         const populateGenre = () => {
                             parsedGenreData.forEach((arrItem) => {
@@ -85,12 +85,24 @@
                             newEl.setAttribute('name', 'genre_type');
                             newEl.setAttribute('value', arrItem)
 
+                            newEl.addEventListener('keypress', (e) => {
+                            if(e.key == 'Enter') {
+                                e.preventDefault();
+                                document.querySelector(`.input-number-${(parseFloat(Array.from(e.target.classList)[0].slice(13)) + 1).toString()}`) ?
+                                document.querySelector(`.input-number-${(parseFloat(Array.from(e.target.classList)[0].slice(13)) + 1).toString()}`).focus() : 
+                                document.querySelector('.imageUrlInput').focus();
+
+                                // 
+                            }
+                        })
+
                             
                             removeBtn.setAttribute('class', `removeBtn-${inputNumber} removeGenreBtn`)
+                            removeBtn.setAttribute('type', 'button');
                             
                             removeInputImg.setAttribute('src', '/deleteGoogleIcon.svg')
                             removeInputImg.setAttribute('alt', 'Delete Input icon');
-                            removeInputImg.setAttribute('class', 'removeGenreBtnImg')
+                            removeInputImg.setAttribute('class', 'removeGenreBtnImg');
 
 
                             removeBtn.addEventListener('click', (e) => {
@@ -107,7 +119,7 @@
                             });
                         }
 
-
+                        
 
 
 
@@ -125,10 +137,29 @@
                             newEl.setAttribute('required', '');
                             newEl.setAttribute('oninvalid', 'this.setCustomValidity("Please fill out this field, or remove input with trash icon.")');
                             newEl.setAttribute('oninput', 'this.setCustomValidity("")');
-                            newEl.setAttribute('name', 'genre_type')
+                            newEl.setAttribute('name', 'genre_type');
 
+                            newEl.addEventListener('keypress', (e) => {
+                            if(e.key == 'Enter') {
+                                e.preventDefault();
+                                document.querySelector(`.input-number-${(parseFloat(Array.from(e.target.classList)[0].slice(13)) + 1).toString()}`) ?
+                                document.querySelector(`.input-number-${(parseFloat(Array.from(e.target.classList)[0].slice(13)) + 1).toString()}`).focus() : 
+                                document.querySelector('.imageUrlInput').focus();
+
+                                // 
+                            }
+                        })
+
+
+                            newEl.addEventListener('keypress', (e) => {
+                            if(e.key == 'Enter') {
+                                e.preventDefault();
+                                document.querySelector(`input-number-${inputNumber + 1}`).focus()
+                            }
+                        })
                             
-                            removeBtn.setAttribute('class', `removeBtn-${inputNumber} removeGenreBtn`)
+                            removeBtn.setAttribute('class', `removeBtn-${inputNumber} removeGenreBtn`);
+                            removeBtn.setAttribute('type', 'button');
                             
                             removeInputImg.setAttribute('src', '/deleteGoogleIcon.svg')
                             removeInputImg.setAttribute('alt', 'Delete Input icon');
@@ -155,6 +186,8 @@
                             populateGenre();
                             
                         }
+
+
                         
 
                     </script>
@@ -164,7 +197,7 @@
                 <legend class="selectItemLegend">Choose a cover for the book!</legend>
                 <div class="addBookLabelAndInputCont addImageUrlCont">
                     <label for="imageUrl">Image URL: </label>
-                    <input type="url" id="imageUrl" name="imageUrl" value="<%= locals.data[0].cover_image_url %>"> 
+                    <input type="url" class="imageUrlInput" id="imageUrl" name="imageUrl" value="<%= locals.data[0].cover_image_url %>"> 
                 </div>
             </fieldset>
             <div class="addBookBtnCont"><button type="submit" class="addBookBtn orangeBtn">Update Book</button></div>
