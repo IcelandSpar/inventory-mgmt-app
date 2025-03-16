@@ -53,6 +53,45 @@ INSERT INTO genres (book_id, genre_type) VALUES
 (2, 'Histerical Realism'),
 (2, 'Science Fiction');
 
+CREATE TABLE IF NOT EXISTS videogames
+(id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+game_title VARCHAR(255),
+game_release_date TIMESTAMP,
+game_description VARCHAR(1600),
+game_cover_image_url VARCHAR(400)
+);
+
+CREATE TABLE IF NOT EXISTS game_genres 
+(
+game_id INTEGER REFERENCES videogames(id),
+genre VARCHAR(255)
+);
+
+CREATE TABLE IF NOT EXISTS developers
+(
+game_id INTEGER REFERENCES videogames(id),
+developer_name VARCHAR(255)
+);
+
+INSERT INTO videogames (game_title, game_release_date, game_description, game_cover_image_url) VALUES 
+(
+'Elden Ring',
+'Feb 25, 2022',
+'Elden Ring is an action RPG developed by FromSoftware and published by Bandai Namco Entertainment, released in February 2022. Directed by Hidetaka Miyazaki, with world-building contributions from novelist George R. R. Martin, the game features an expansive open world called the Lands Between. Players assume the role of a customisable character known as the Tarnished, who must explore this world, battle formidable enemies, and seek to restore the Elden Ring to become the Elden Lord. The game builds on the challenging gameplay mechanics familiar from the Dark Souls series but introduces a more open-ended structure with vast exploration, dynamic weather, and a day-night cycle. It offers deep lore, complex characters, and an interconnected world filled with secrets, dungeons, and powerful bosses.',
+'https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4jni.jpg'
+);
+
+INSERT INTO developers (game_id, developer_name) VALUES
+(1, 'Bandai Namco'),
+(1, 'From Software');
+
+INSERT INTO game_genres (game_id, genre) VALUES
+
+(1, 'Adventure'),
+(1, 'RPG');
+
+
+
 `
 
 async function main() {
