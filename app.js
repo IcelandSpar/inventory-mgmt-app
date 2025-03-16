@@ -11,8 +11,10 @@ app.use(express.static(assetsPath));
 app.use(express.urlencoded({ extended: true }));
 
 const indexRouter = require('./routes/indexRouter');
+const videoGameRouter = require('./routes/videoGameRouter');
 
 app.use('/', indexRouter);
+app.use('/videoGames', videoGameRouter);
 
 
 app.listen(process.env.SERVER_PORT, () => {

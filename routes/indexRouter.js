@@ -16,12 +16,11 @@ indexRouter.post('/create/add-book', postAddBook);
 indexRouter.get('/editBook/:id', getEditBookForm);
 indexRouter.post('/editBook/:id', postEditBookForm);
 
-indexRouter.get('/create/add-videogame', (req, res) => {
-    res.end('Add videogame Form');
-});
-
 indexRouter.get('/deleteBook/:title/:id', getDeleteBookForm);
 indexRouter.post('/deleteBook/:title/:id', postDeleteBook);
 
+indexRouter.get('/create/add-videogame', (req, res) => {
+    res.end('Add videogame Form');
+});
 
 module.exports = indexRouter;
