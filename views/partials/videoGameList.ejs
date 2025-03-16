@@ -1,4 +1,57 @@
 <main class="mainContainer">
     <h2 class="mainItemType">Video Games:</h2>
+    <% if(locals.videoGameData.length == 0) {  %>
+        <p class="noBooksInInventoryText">No Games in inventory exist, you can add a <a class="noBooksInInventoryLink" href="/create/add-videogame">New Game!</a></p>
+     <% }  %>
 
+     <ul class="mainUl">
+        <% locals.videoGameData.map((item, index) => { %>
+            <li class="homeMainCont">
+                <div class="titleAndDeleteBtnCont">
+                    <h3 class="mainItemTitle"><%= item.game_title %></h3>
+                    <!-- <a href="https://www.flaticon.com/free-icons/ebook" title="ebook icons">Ebook icons created by Ranah Pixel Studio - Flaticon</a> -->
+                                  <!-- <a href="https://www.flaticon.com/free-icons/ebook" title="ebook icons">Ebook icons created by Ranah Pixel Studio - Flaticon</a> -->
+              <div>
+                <a href="/editBook/<%= item.id %>">
+                      <img class="editBookIcon" title="Edit Book" src="/editGoogleIcon.svg" alt="edit book" width="25px"/>
+                </a>
+                <a href="/deleteBook/<%= item.title %>/<%= item.id %>">
+                      <img
+                        title="Delete Book"
+                        class="deleteBookIcon"
+                        src="/deleteGoogleIcon.svg"
+                        alt="delete book"
+                        width="25px"
+                      />
+                </a>
+              </div>
+            </div>
+                  </div>
+                  <div class="mainItemImgAndDescCont">
+                    <!-- Missing Book Cover Stock photo reference -->
+                    <!-- Image by <a href="https://pixabay.com/users/darkmoon_art-1664300/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3057902">Dorothe</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=3057902">Pixabay</a> -->
+                    <figure class="mainItemImageCont">
+                      <% if(!item.game_cover_image_url) { %>
+                      <figcaption class="missingCoverText">
+                        Missing Cover...
+                      </figcaption>
+                      <% } %>
+                      <img
+                        class="bookImg"
+                        src="<%= item.game_cover_image_url || 'missing_book.png' %>"
+                        alt="<%= item.title + ' Book Cover' %>"
+                        width="90%"
+                      />
+                    </figure>
+                    <div class="mainItemDescription">
+                      <p>Developers: <%= item.developers %></p>
+                      <p>Release Date: <%= item.game_release_date %></p>
+                      <p>Quantity: <%= item.game_quantity %></p>
+                      <p>Genres: </p>
+                      <p>Description: <%= item.game_description %></p>
+                    </div>
+                  </div>
+            </li>
+          <% }) %>
+     </ul>
   </main>

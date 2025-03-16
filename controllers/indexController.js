@@ -1,4 +1,5 @@
 const db = require("../db/queries");
+const videoGameDB = require('../db/videoGameQueries');
 const { body, validationResult } = require("express-validator");
 
 const validateUser = [
@@ -34,7 +35,11 @@ const validateUser = [
 
 const getIndexPage = async (req, res) => {
   const data = await db.getLimitedBookInfo();
-  res.render("index", { data: data });
+  const videoGameData = await videoGameDB.getLimitedVideoGameList();
+  res.render("index", { 
+    data: data,
+    videoGameData,
+   });
 };
 
 const getCreateForm = async (req, res) => {

@@ -101,6 +101,10 @@
       <% if(locals.data.length != 0) {  %>
         <a href="/books" class="seeMoreBooksLink">See More Books</a>
         <% }  %>
+        <%- include('partials/videoGameList.ejs') %>
+        <% if(locals.videoGameData.length != 0) {  %>
+          <a href="/videogames" class="seeMoreBooksLink">See More Video Games</a>
+          <% }  %>
     </main>
   </body>
 </html>

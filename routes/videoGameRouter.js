@@ -1,9 +1,8 @@
 const { Router } = require('express');
+const { getLimitedVideoGameListPage } = require('../controllers/videoGameController');
 
 const videoGameRouter = Router();
 
-videoGameRouter.get('/', (req, res) => {
-    res.render('videoGames');
-});
+videoGameRouter.get('/', getLimitedVideoGameListPage);
 
 module.exports = videoGameRouter;
