@@ -44,10 +44,10 @@
                       />
                     </figure>
                     <div class="mainItemDescription">
-                      <p>Developers: <%= item.developers %></p>
+                      <p>Developers: <%= (Array.from(item.developers)).join(', ') || 'No current Developers listed' %></p>
                       <p>Release Date: <%= item.game_release_date %></p>
                       <p>Quantity: <%= item.game_quantity %></p>
-                      <p>Genres: </p>
+                      <p>Genres: <%= (Array.from(item.genre_type)).join(', ') || 'No current genres listed' %></p>
                       <p>Description: <%= item.game_description %></p>
                     </div>
                   </div>
